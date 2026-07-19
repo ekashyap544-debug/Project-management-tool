@@ -1,0 +1,34 @@
+-- PROJECTS
+CREATE TABLE projects(
+id INT AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(200),
+created_by INT
+);
+
+-- TASKS / CARDS
+CREATE TABLE tasks(
+id INT AUTO_INCREMENT PRIMARY KEY,
+project_id INT,
+title VARCHAR(200),
+description TEXT,
+assigned_to INT,
+status ENUM('todo','inprogress','done') DEFAULT 'todo',
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- TASK COMMENTS
+CREATE TABLE task_comments(
+id INT AUTO_INCREMENT PRIMARY KEY,
+task_id INT,
+user_id INT,
+comment TEXT,
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- NOTIFICATIONS
+CREATE TABLE notifications(
+id INT AUTO_INCREMENT PRIMARY KEY,
+user_id INT,
+message VARCHAR(255),
+is_read TINYINT DEFAULT 0
+);
